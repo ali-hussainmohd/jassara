@@ -1,22 +1,6 @@
 <?php 
 
-function connection()
-{
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $db = "jassara";
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $db);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-    echo "Connected successfully";
-    return $conn;
-}
+include 'function.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($_POST['username'])) {
@@ -39,19 +23,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             //$password = md5($password);  
 
             $sql = "select * from student where stname = '$username' and password = '$password'";
-            echo " <br>" . $sql;
+            //echo " <br>" . $sql;
 
             $result = mysqli_query($con, $sql);
             $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
             $count = mysqli_num_rows($result);
-            echo  " <br>" . $count;
-            echo " <br>" . $row['user_role'];
+            //echo  " <br>" . $count;
+            //echo " <br>" . $row['user_role'];
 
             if ($count == 1) {
 
 
                 session_start();
                 $_SESSION['username'] = $_POST['username'];
+                $_SESSION['fullname']=$row['full_name'];
+                $_SESSION['birth_date']=$row['date_birth'];
+                $_SESSION['level']=$row['uni_level'];
 
                 header('Location:studentPage.php');
                 exit();
