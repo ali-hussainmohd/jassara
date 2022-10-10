@@ -1,4 +1,4 @@
-
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +9,20 @@
     <meta name="description" content="">
     <meta name="author" content="Template Mo">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
 
+        footer {
+            clear: both;
+            position: relative;
+            height: 200px;
+            margin-top: -200px;
+        }
+    </style>
 
     <title>Jassara HTML CSS Template</title>
     <!--
@@ -52,11 +65,31 @@ https://templatemo.com/tm-537-Jassara
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav ">
 
-            
+                        <li class="">
+
+                            <div class="input-group">
+                                <div class="form-outline">
+                                    <input type="search" id="form1" class="form-control" placeholder="Search" />
+                                </div>
+
+                                <button type="button" class="btn searchBarButton" style="background-color:white">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                    </svg>
+                                </button>
+                            </div>
+
+                        </li>
                         <li class="scroll-to-section"><a href="#welcome" class="active">Home</a></li>
-                        <li class="scroll-to-section"><a href="#about">Contact Us</a></li>
                         <li class="scroll-to-section"><a href="#about">About</a></li>
-                      
+                        <li class="submenu">
+                            <a href="javascript:;">Drop Down</a>
+                            <ul>
+                                <li><a href="">About Us</a></li>
+                                <li><a href="">Challenges</a></li>
+                                <li><a href="">contect us</a></li>
+                            </ul>
+                            </a>
                     </ul>
 
                     <!-- ***** Menu End ***** -->
@@ -72,78 +105,42 @@ https://templatemo.com/tm-537-Jassara
     <div class="container">
         <div class="row  h-75 d-inline-block pt-5 mb-5 mx-0 px-0"> </div> <!-- ***** ajust the space ***** -->
 
-        <!--Error Message-->
-        <?php
-        $errorMessage = "0";
-        $visibility = "hidden";
+        <div class="alert" style="background-color: #18a4bc; color:white; width: 20%;" role="alert">
+            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+            </svg>
 
-        if (!empty($_GET['error1'])) {
-            $errorType = $_GET['error1'];
-
-            if ($errorType == "userNameEmpty") {
-                $errorMessage = "Please enter your username";
-                $visibility = "";
-            } else if ($errorType == "passwordEmpty") {
-                $errorMessage = "Please enter your password";
-                $visibility = "";
-            } else if ($errorType == "UserNotFound") {
-                $errorMessage = "User not founded , please make sure that you have account  with Jassara";
-                $visibility = "";
+            <?php
+            if (!empty($_SESSION['username'])) {
+                $UserName = $_SESSION['username'];
+                echo "<h5 style=display:inline> Hello, " . $UserName . "</h5>";
             }
-        }
+            ?>
 
-        // This echo to display the red color alert 
-        echo '
-        <div class="alert alert-danger"
-         role="alert"
-         ' . $visibility . '>
-    ' . $errorMessage . '
-             </div>';
-        ?>
-        <!--Error Message End -->
-
-
-        <div class="row d-flex justify-content-center   ">
-            <form class="" action="loginDB.php" method="POST">
-
-
-
-                <!-- Email input -->
-                <div class="form-outline mb-4">
-                    <label class="form-label" for="username"> User Name</label>
-                    <input type="int" id="username" class="form-control" name="username" placeholder="Your User name" />
-                </div>
-
-                <!-- Password input -->
-                <div class="form-outline mb-4">
-                    <label class="form-label" for="form2Example2">Password</label>
-                    <input type="password" id="form2Example2" class="form-control" name="password" placeholder="Your password" require="required" />
-                </div>
-
-                <!-- 2 column grid layout for inline styling -->
-                <div class="row mb-4">
-                    <div class="col d-flex justify-content-center">
-                        <!-- Checkbox -->
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
-                            <label class="form-check-label" for="form2Example31"> Remember me </label>
-                        </div>
-                    </div>
-
-
-
-                    <!-- Submit button -->
-                    <button type="submit" class="btn btn-info btn-block mb-4" name="Signin_button">Sign in</button>
-                    <!-- Register buttons -->
-
-            </form>
         </div>
+        <section class=" col" style="float: right;">
+            <a style="color: White;" href="challenges.php"> <button type="button" class="btn btn-primary btn-lg btn-block " style="background-color: #18a4bc;">Join New Challenges</button></a>
+            <br>
+        </section>
+        <section class="col" style="float: right;">
+
+        <h2 style="text-align:center;">Previous Challenges</h2>
+        <p style="text-align:center;">No challenges</p>
+        
+        </section>
+        <a style="color: White;" href="studentPage.php"><button class="btn btn-info ">Back</button></a>
+
+
+    </div>
+
+
+
     </div> <!-- ***** Menu End ***** -->
 
 
     <!-- ***** Footer Start ***** -->
-    <footer>
-        <div class="container">
+    <footer style="margin-top: 700;">
+        <div class="container" style="display: block;">
             <div class="row">
                 <div class="col-lg-7 col-md-12 col-sm-12">
                     <p class="copyright">Copyright &copy; 2022 Jassara

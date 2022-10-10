@@ -6,6 +6,10 @@
 /*
  *  Owl Carousel - Core
  */
+ #SearchButton:hover
+{
+  background-color: #f55858;
+}
 .owl-carousel {
   display: none;
   width: 100%;

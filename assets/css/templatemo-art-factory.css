@@ -1203,6 +1203,7 @@ contact
   line-height: 26px;
 }
 
+
 .contact-text {
   font-weight: 400;
   font-size: 14px;
@@ -1452,5 +1453,6 @@ preloader
   100% {
     opacity: 0;
   }
+
 }
 

@@ -129,6 +129,10 @@
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
 }
+.searchBarButton:hover
+{
+  background-color: #f55858;;
+}
 .fa-rotate-270 {
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)";
   -webkit-transform: rotate(270deg);
