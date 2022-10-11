@@ -27,7 +27,19 @@ https://templatemo.com/tm-537-Jassara
 
 
 </head>
+<style>
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+</style>
 <!-- ***** Header Area Start ***** -->
 <header class="header-area bg-info mb-6">
     <!-- ***** class="header-area  bg-dark mb-6" ***** -->

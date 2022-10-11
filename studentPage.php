@@ -1,10 +1,10 @@
-<?php session_start(); 
+<?php session_start();
 include 'tamplate.php';
 login_header();
 login_nav();
 ?>
 
-                  
+
 
 
 <body>
@@ -31,13 +31,47 @@ login_nav();
             <br>
             <a style="color: White;" href="ranking.php"> <button type="button" class="btn btn-primary btn-lg btn-block " style="background-color: #18a4bc;">Ranks</button></a>
             <br>
-       
+
+
+
         </section>
+
+
 
 
     </div>
 
+
     </div> <!-- ***** Menu End ***** -->
 
+    <section class="col-md-6 container" >
+        <form method="GET" action="">
+            <a style="color: White;" class="col mb-5" href="studentPage.php">
+            <button type="submit" name="log-outButton" class="btn btn-info mb-2">Logout</button></a>
+            <?php
+            try {
+                if (isset($_GET["log-outButton"])) {
 
-   <?php footer(); ?>
+
+                    session_unset();
+                    session_destroy();
+                    // This is to logout , since header is busy we used script instead of header . 
+                    /**
+                     * Error : 
+                     * header already sent by c , cannot be modified 
+                     * to test that , try header("Location: index.php")
+                    */
+                    $url = "index.php";
+                    echo '<script language="javascript">window.location.href ="' . $url . '"</script>';
+                    exit();
+
+                }
+            } catch (Exception $s) {
+            }
+
+            ?>
+        </form>
+
+    </section>
+
+    <?php footer(); ?>
