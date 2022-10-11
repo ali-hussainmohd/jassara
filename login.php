@@ -53,9 +53,9 @@ https://templatemo.com/tm-537-Jassara
                     <ul class="nav ">
 
             
-                        <li class="scroll-to-section"><a href="#welcome" class="active">Home</a></li>
-                        <li class="scroll-to-section"><a href="#about">Contact Us</a></li>
-                        <li class="scroll-to-section"><a href="#about">About</a></li>
+                        <li class="scroll-to-section"><a href="index.php#welcome" class="active">Home</a></li>
+                        <li class="scroll-to-section"><a href="index.php#contact-us">Contact Us</a></li>
+                        <li class="scroll-to-section"><a href="index.php#about">About</a></li>
                       
                     </ul>
 
@@ -81,7 +81,7 @@ https://templatemo.com/tm-537-Jassara
             $errorType = $_GET['error1'];
 
             if ($errorType == "userNameEmpty") {
-                $errorMessage = "Please enter your username";
+                $errorMessage = "Please enter your id number";
                 $visibility = "";
             } else if ($errorType == "passwordEmpty") {
                 $errorMessage = "Please enter your password";
@@ -110,8 +110,8 @@ https://templatemo.com/tm-537-Jassara
 
                 <!-- Email input -->
                 <div class="form-outline mb-4">
-                    <label class="form-label" for="username"> User Name</label>
-                    <input type="int" id="username" class="form-control" name="username" placeholder="Your User name" />
+                    <label class="form-label" for="userid"> Id number</label>
+                    <input type="number" id="userid" class="form-control" name="userid" placeholder="Your User id" />
                 </div>
 
                 <!-- Password input -->

@@ -29,7 +29,7 @@ login_nav();
             <br>
             <a style="color: White;" href="challengePage.php"> <button type="button" class="btn btn-primary btn-lg btn-block " style="background-color: #18a4bc;">Challenges</button></a>
             <br>
-            <a style="color: White;" href="studentData.php"> <button type="button" class="btn btn-primary btn-lg btn-block " style="background-color: #18a4bc;">Ranks</button></a>
+            <a style="color: White;" href="ranking.php"> <button type="button" class="btn btn-primary btn-lg btn-block " style="background-color: #18a4bc;">Ranks</button></a>
             <br>
        
         </section>

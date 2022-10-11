@@ -85,14 +85,15 @@ function login_nav(){
             </div>
 
         </li>
-        <li class="scroll-to-section"><a href="#welcome" class="active">Home</a></li>
-        <li class="scroll-to-section"><a href="#about">About</a></li>
+        <li class="scroll-to-section"><a href="index.php#welcome" class="active">Home</a></li>
+        <li class="scroll-to-section"><a href="index.php#about">About</a></li>
         <li class="submenu">
             <a href="javascript:;">Drop Down</a>
             <ul>
-                <li><a href="">About Us</a></li>
-                <li><a href="">Challenges</a></li>
-                <li><a href="">contect us</a></li>
+                
+                <li><a href="challengePage.php">Challenges</a></li>
+                <li><a href="ranking.php">Ranking</a></li>
+                <li><a href="index.php#contact-us">contect us</a></li>
             </ul>
             </a>
     </ul>

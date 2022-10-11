@@ -3,10 +3,10 @@
 include 'function.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (!empty($_POST['username'])) {
+    if (!empty($_POST['userid'])) {
         if (!empty($_POST['password'])) {
 
-            $username = $_POST['username'];
+            $username = $_POST['userid'];
             $password = $_POST['password'];
 
     
@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             //$password = md5($password);  
 
-            $sql = "select * from student where stname = '$username' and password = '$password'";
+            $sql = "select * from student where uni_id = '$username' and password = '$password'";
             //echo " <br>" . $sql;
 
             $result = mysqli_query($con, $sql);
@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
                 session_start();
-                $_SESSION['username'] = $_POST['username'];
+                $_SESSION['username'] = $row['stname'];
                 $_SESSION['fullname']=$row['full_name'];
                 $_SESSION['birth_date']=$row['date_birth'];
                 $_SESSION['level']=$row['uni_level'];
