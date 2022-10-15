@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 require 'function.php';
 
@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $username = $_POST['userid'];
             $password = $_POST['password'];
 
-    
+
 
 
             $con =  connection();
@@ -23,6 +23,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             //$password = md5($password);  
 
             $sql = "select * from student where uni_id = '$username' and password = '$password'";
+            if (empty($sql)) {
+                //Admin Check 
+            } else if (empty($sql)) {
+                // Faculty Check 
+            }
             //echo " <br>" . $sql;
 
             $result = mysqli_query($con, $sql);
@@ -36,9 +41,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 session_start();
                 $_SESSION['username'] = $row['stname'];
-                $_SESSION['fullname']=$row['full_name'];
-                $_SESSION['birth_date']=$row['date_birth'];
-                $_SESSION['level']=$row['uni_level'];
+                $_SESSION['fullname'] = $row['full_name'];
+                $_SESSION['birth_date'] = $row['date_birth'];
+                $_SESSION['level'] = $row['uni_level'];
 
                 header('Location:studentPage.php');
                 exit();
@@ -47,10 +52,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             }  //if
             else {
+                // ADMIN LOGIN 
 
-                /*echo "<h1> Login failed. Invalid username or password.</h1>";*/
-                //header('Location: login.php'); // header('Location: voluntary.php');
-                //unset($_POST);
+                $sql = "select * from admin where ID = '$username' and password = '$password'";
+                $result = mysqli_query($con, $sql);
+                $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                $count = mysqli_num_rows($result);
+
+
+                if ($count == 1) {
+                    session_start();
+                    $_SESSION['username'] = $row['Fname'] ;
+                    $_SESSION['fullname'] = $row['full_name'];
+                    $_SESSION['birth_date'] = $row['date_birth'];
+                    $_SESSION['level'] = $row['uni_level'];
+                    header('Location:admin.php');
+                    exit();
+                }  //if
+                else 
+                {
+                    // FACULTY LOGIN 
+                }
+
+    
                 header("Location: login.php?error1=UserNotFound");
                 exit();
             }  //else   
