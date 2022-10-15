@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 11, 2022 at 01:42 PM
+-- Generation Time: Oct 15, 2022 at 10:56 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -52,6 +52,7 @@ CREATE TABLE `challenge` (
   `challenge_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `challenge_level` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `challenge_date` date NOT NULL,
+  `Deadline` date NOT NULL,
   `Point` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -59,11 +60,11 @@ CREATE TABLE `challenge` (
 -- Dumping data for table `challenge`
 --
 
-INSERT INTO `challenge` (`challenge_num`, `challenge_name`, `challenge_level`, `challenge_date`, `Point`) VALUES
-(100, 'Business', 'hard', '2022-09-30', 0),
-(200, 'program_php', 'hard', '2022-09-28', 0),
-(300, 'design ', 'Easy', '2022-09-30', 0),
-(400, 'Draw', 'hard', '2022-10-19', 0);
+INSERT INTO `challenge` (`challenge_num`, `challenge_name`, `challenge_level`, `challenge_date`, `Deadline`, `Point`) VALUES
+(100, 'Business', 'hard', '2022-09-30', '2022-10-31', 0),
+(200, 'program_php', 'hard', '2022-09-28', '2022-11-16', 0),
+(300, 'design ', 'Easy', '2022-09-30', '2022-11-23', 0),
+(400, 'Draw', 'hard', '2022-10-19', '2022-11-23', 0);
 
 -- --------------------------------------------------------
 
@@ -115,8 +116,8 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`id`, `full_name`, `stname`, `uni_id`, `password`, `major`, `challenge_num`, `date_birth`, `uni_level`) VALUES
-(1, 'maryam Mohd', 'maryam', '2190006173', '123456', 'it', 100, '2000-11-18', 'SENIOR'),
-(2, 'Noor Yousif', 'noor', '2190006179', '123456', 'it', 300, '2001-07-06', 'JUNIOR');
+(1, 'Shaden Almutairi', 'Shaden', '2190006173', '123456', 'it', 100, '2000-11-18', 'SENIOR'),
+(2, 'Reem abduallah', 'reem', '2190006179', '123456', 'it', 300, '2001-07-06', 'JUNIOR');
 
 --
 -- Indexes for dumped tables
@@ -175,7 +176,7 @@ ALTER TABLE `faculty`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
