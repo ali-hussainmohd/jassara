@@ -1,8 +1,8 @@
-<?php session_start(); 
+<?php session_start();
 include 'tamplate.php';
 login_header();
 login_nav();
- ?>
+?>
 
 
 
@@ -25,36 +25,57 @@ login_nav();
 
         </div>
 
-        <div class="alert alert-danger" role="alert">
-            No Challenges
-        </div>
 
-        <a style="color: White;" href="studentPage.php"><button class="btn btn-info mb-2">Back</button></a>
+
 
 
         <!-- Challenges section -->
-        <section class="col" style="float: center;">
-            <div class="row mb-5">
+        <section style="float: center;">
 
-                <?php
-                // print avl. challenges here 
-               /*
-        for($index = 1 ; $index < 6; $index++)
-        {
-            echo '  
-            <div class="card-deck">
-            <div class="card" style="border-width: 1; border-color:#18a4bc; border: raduis 180px;">
-                <div class="card-body">
-                    <h5 class="card-title">challenge No. '.$index.'</h5>
-                    <p class="card-text">This is Test challmege</p>
-                    <p class="card-text"><small class="text-muted">Basic level</small></p>
-                </div>
-            </div>
-           ';
-        }*/
-                ?>
-            </div>
 
+            <?php
+            require 'function.php';
+            $con = connection();
+            $sql = "SELECT * FROM challenge";
+            $result = mysqli_query($con, $sql);
+            $count = mysqli_num_rows($result);
+
+            if ($count == 0) {
+                echo
+                '<div class="alert alert-danger" role="alert">
+                        No Challenges
+                    </div>
+                    ';
+            } else {
+                $index = 0;
+                while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                    echo '  
+                        <div class="container col">
+                        <ol class="list-group list-group-numbered">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                          <div class="ms-2 me-auto">
+                            <div class="fw-bold"><h4>'.$row['challenge_name'].'</h4></div>
+                            Level: '.$row['challenge_level'].'
+                            <br>
+                            Start Date: '.$row['challenge_date'].' 
+                            <br>
+                            Deadline : '.$row['Deadline'].'
+                          </div>
+                          <span class="badge bg-info rounded-pill" style="color:white;font-size:20px">
+                          '.$row['challenge_num'].'
+                          </span>
+                          
+                        </li>
+                        <button class="btn bg-info" style="color:white;">Join Challenge</button>
+                        <br>
+                      </ol>
+                      </div>
+                   ';
+                }
+            }
+            ?>
+
+            <a style="color: White;" href="studentPage.php"><button class="btn btn-info mb-2">Back</button></a>
 
 
         </section>

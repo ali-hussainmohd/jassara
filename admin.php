@@ -24,7 +24,7 @@ admin_nav();
         <section class=" col-md-6" style="float: right;">
             <a style="color: White;" href="ManageChallenges.php"> <button type="button" class="btn btn-primary btn-lg btn-block " style="background-color: #18a4bc;">Manage Challenges</button></a>
             <br>
-            <a style="color: White;" href="challengePage.php"> <button type="button" class="btn btn-primary btn-lg btn-block " style="background-color: #18a4bc;">Manage Users</button></a>
+            <a style="color: White;" href="ManageUsers.php"> <button type="button" class="btn btn-primary btn-lg btn-block " style="background-color: #18a4bc;">Manage Users</button></a>
             <br>
             <a style="color: White;" href="ranking.php"> <button type="button" class="btn btn-primary btn-lg btn-block " style="background-color: #18a4bc;">Manage Results</button></a>
             <br>
