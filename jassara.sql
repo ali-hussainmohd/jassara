@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2022 at 10:56 AM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.3
+-- Generation Time: Oct 19, 2022 at 08:54 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -29,17 +28,19 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin` (
-  `id` int(10) NOT NULL,
-  `password` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
-  `challenge_num` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `ID` varchar(40) NOT NULL,
+  `Fname` varchar(20) NOT NULL,
+  `Lname` varchar(20) NOT NULL,
+  `Password` varchar(40) NOT NULL,
+  `Email` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `password`, `challenge_num`) VALUES
-(20010, '12345', 100);
+INSERT INTO `admin` (`ID`, `Fname`, `Lname`, `Password`, `Email`) VALUES
+('1001', 'Ali', 'Hassan', '123456', 'aliHassan@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -49,22 +50,30 @@ INSERT INTO `admin` (`id`, `password`, `challenge_num`) VALUES
 
 CREATE TABLE `challenge` (
   `challenge_num` int(10) NOT NULL,
-  `challenge_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `challenge_name` text COLLATE utf8_unicode_ci NOT NULL,
   `challenge_level` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `challenge_date` date NOT NULL,
   `Deadline` date NOT NULL,
-  `Point` int(11) NOT NULL
+  `Points` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `challenge`
 --
 
-INSERT INTO `challenge` (`challenge_num`, `challenge_name`, `challenge_level`, `challenge_date`, `Deadline`, `Point`) VALUES
-(100, 'Business', 'hard', '2022-09-30', '2022-10-31', 0),
-(200, 'program_php', 'hard', '2022-09-28', '2022-11-16', 0),
-(300, 'design ', 'Easy', '2022-09-30', '2022-11-23', 0),
-(400, 'Draw', 'hard', '2022-10-19', '2022-11-23', 0);
+INSERT INTO `challenge` (`challenge_num`, `challenge_name`, `challenge_level`, `challenge_date`, `Deadline`, `Points`) VALUES
+(100, 'Business Analyst ', 'hard', '2022-09-30', '2022-10-31', 180),
+(110, 'Microsoft Excel ', 'Basic', '2022-10-15', '2022-10-22', 10),
+(120, 'Microsoft Access DB', 'Basic', '2022-10-22', '2022-10-28', 5),
+(121, 'Accounting', 'EASY', '2022-10-17', '2022-10-24', 10),
+(122, 'CISA', 'Hard', '2022-10-17', '2022-10-24', 480),
+(123, 'Data Basics', 'Basic', '2022-10-27', '2022-10-14', 180),
+(130, 'Microsoft Power BI', 'Advanced', '2022-10-15', '2022-10-29', 1800),
+(140, 'Microsoft Azure fundamental data', 'Middle', '2022-10-22', '2022-10-29', 180),
+(150, 'Microsoft Word specialist ', 'Advanced', '2022-10-15', '2022-10-29', 95),
+(160, 'Microsoft Azure Lamda functions', 'Advanced', '2022-10-08', '2022-12-31', 180),
+(200, 'Php Programmiing', 'hard', '2022-09-28', '2022-11-16', 78),
+(300, 'design ', 'Easy', '2022-09-30', '2022-11-23', 405);
 
 -- --------------------------------------------------------
 
@@ -116,19 +125,13 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`id`, `full_name`, `stname`, `uni_id`, `password`, `major`, `challenge_num`, `date_birth`, `uni_level`) VALUES
-(1, 'Shaden Almutairi', 'Shaden', '2190006173', '123456', 'it', 100, '2000-11-18', 'SENIOR'),
-(2, 'Reem abduallah', 'reem', '2190006179', '123456', 'it', 300, '2001-07-06', 'JUNIOR');
+(1, 'SARA ALMUTARI', 'SARA', '34433', '123456', 'IT', 121, '2022-10-19', 'SENIOR'),
+(3, 'AMIRA AHLAM', 'AMIRA', '46454', '123456', 'IT', 100, '2000-08-01', 'SENIOR'),
+(4, 'RADA AHLAM', 'RADA', '54343', '123456', 'IT', 100, '2000-08-01', 'SENIOR');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `challenge_num` (`challenge_num`);
 
 --
 -- Indexes for table `challenge`
@@ -181,12 +184,6 @@ ALTER TABLE `student`
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `admin`
---
-ALTER TABLE `admin`
-  ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`challenge_num`) REFERENCES `challenge` (`challenge_num`);
 
 --
 -- Constraints for table `faculty`
