@@ -108,9 +108,6 @@ $count = mysqli_num_rows($result);
         Add New Challenge
     </button>
 
-    <button type="button col" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">
-        <a style="color:White;" href="challenges.php">Go</a>
-    </button>
 
     
     <button type="button col" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">

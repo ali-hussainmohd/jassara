@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 19, 2022 at 08:54 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Oct 19, 2022 at 10:10 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -73,7 +74,8 @@ INSERT INTO `challenge` (`challenge_num`, `challenge_name`, `challenge_level`, `
 (150, 'Microsoft Word specialist ', 'Advanced', '2022-10-15', '2022-10-29', 95),
 (160, 'Microsoft Azure Lamda functions', 'Advanced', '2022-10-08', '2022-12-31', 180),
 (200, 'Php Programmiing', 'hard', '2022-09-28', '2022-11-16', 78),
-(300, 'design ', 'Easy', '2022-09-30', '2022-11-23', 405);
+(300, 'design ', 'Easy', '2022-09-30', '2022-11-23', 405),
+(500, 'nbn', 'hard', '2022-10-21', '2022-10-31', 120);
 
 -- --------------------------------------------------------
 
@@ -87,6 +89,28 @@ CREATE TABLE `faculty` (
   `password` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
   `challenge_num` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `previous_challenge`
+--
+
+CREATE TABLE `previous_challenge` (
+  `id` int(11) NOT NULL,
+  `stname` varchar(255) NOT NULL,
+  `uni_id` varchar(255) NOT NULL,
+  `challenge_num` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `previous_challenge`
+--
+
+INSERT INTO `previous_challenge` (`id`, `stname`, `uni_id`, `challenge_num`) VALUES
+(1, 'SARA', '2190006173', 121),
+(2, 'SARA', '2190006173', 110),
+(3, 'SARA', '2190006173', 120);
 
 -- --------------------------------------------------------
 
@@ -125,9 +149,9 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`id`, `full_name`, `stname`, `uni_id`, `password`, `major`, `challenge_num`, `date_birth`, `uni_level`) VALUES
-(1, 'SARA ALMUTARI', 'SARA', '34433', '123456', 'IT', 121, '2022-10-19', 'SENIOR'),
-(3, 'AMIRA AHLAM', 'AMIRA', '46454', '123456', 'IT', 100, '2000-08-01', 'SENIOR'),
-(4, 'RADA AHLAM', 'RADA', '54343', '123456', 'IT', 100, '2000-08-01', 'SENIOR');
+(1, 'SARA ALMUTARI', 'SARA', '2190006173', '123456', 'IT', 121, '2022-10-19', 'SENIOR'),
+(3, 'AMIRA AHLAM', 'AMIRA', '2190006174', '123456', 'IT', 100, '2000-08-01', 'SENIOR'),
+(4, 'RADA AHLAM', 'RADA', '2190006175', '123456', 'IT', 100, '2000-08-01', 'SENIOR');
 
 --
 -- Indexes for dumped tables
@@ -146,6 +170,13 @@ ALTER TABLE `faculty`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `tname` (`tname`),
   ADD KEY `challenge_num` (`challenge_num`);
+
+--
+-- Indexes for table `previous_challenge`
+--
+ALTER TABLE `previous_challenge`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `challage_id` (`challenge_num`);
 
 --
 -- Indexes for table `result`
@@ -176,6 +207,12 @@ ALTER TABLE `faculty`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `previous_challenge`
+--
+ALTER TABLE `previous_challenge`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
@@ -190,6 +227,12 @@ ALTER TABLE `student`
 --
 ALTER TABLE `faculty`
   ADD CONSTRAINT `faculty_ibfk_1` FOREIGN KEY (`challenge_num`) REFERENCES `challenge` (`challenge_num`);
+
+--
+-- Constraints for table `previous_challenge`
+--
+ALTER TABLE `previous_challenge`
+  ADD CONSTRAINT `challage_id` FOREIGN KEY (`challenge_num`) REFERENCES `challenge` (`challenge_num`);
 
 --
 -- Constraints for table `result`

@@ -28,6 +28,53 @@ login_nav();
         <section class="col" style="float: right;">
 
         <h2 style="text-align:center;">Previous Challenges</h2>
+
+        <?php 
+                    require 'function.php';
+                    $con = connection();
+                    $sql = "SELECT * FROM previous_challenge where 	stname = '$UserName'  ";
+                    $result = mysqli_query($con, $sql);
+                    $count = mysqli_num_rows($result);
+        
+                    if ($count == 0) {
+                        echo
+                        '<div class="alert alert-danger" role="alert">
+                                No Challenges
+                            </div>
+                            ';
+                    } else {
+
+                        $sql = "SELECT * FROM challenge";
+                    $result = mysqli_query($con, $sql);
+                    $count = mysqli_num_rows($result);
+                        $index = 0;
+                        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                            echo '  
+                                <div class="container col">
+                                <ol class="list-group list-group-numbered">
+                                <li class="list-group-item d-flex justify-content-between align-items-start">
+                                  <div class="ms-2 me-auto">
+                                    <div class="fw-bold"><h4>'.$row['challenge_name'].'</h4></div>
+                                    Level: '.$row['challenge_level'].'
+                                    <br>
+                                    Start Date: '.$row['challenge_date'].' 
+                                    <br>
+                                    Deadline : '.$row['Deadline'].'
+                                  </div>
+                                  <span class="badge bg-info rounded-pill" style="color:white;font-size:20px">
+                                  '.$row['challenge_num'].'
+                                  </span>
+                                  
+                                </li>
+                                <button class="btn bg-info" style="color:white;">Join Challenge</button>
+                                <br>
+                              </ol>
+                              </div>
+                           ';
+                        }
+                    }
+        
+        ?>
         <p style="text-align:center;">No challenges</p>
         
         </section>
