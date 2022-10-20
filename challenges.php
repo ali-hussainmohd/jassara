@@ -66,7 +66,9 @@ login_nav();
                           </span>
                           
                         </li>
-                        <button class="btn bg-info" style="color:white;">Join Challenge</button>
+                        <form>
+                        <button type="submit" class="btn bg-info" style="color:white;">Join Challenge</button>
+                        </form>
                         <br>
                       </ol>
                       </div>

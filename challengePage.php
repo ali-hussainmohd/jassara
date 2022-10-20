@@ -32,7 +32,11 @@ login_nav();
         <?php 
                     require 'function.php';
                     $con = connection();
-                    $sql = "SELECT * FROM previous_challenge where 	stname = '$UserName'  ";
+                    $uni_id = $_SESSION['uni_id'];
+                    $sql = "select * from challenge 
+                    right join previous_challenge
+                    on challenge.challenge_num = previous_challenge.challenge_num
+                     where 	uni_id = '$uni_id'  ";
                     $result = mysqli_query($con, $sql);
                     $count = mysqli_num_rows($result);
         
@@ -44,9 +48,7 @@ login_nav();
                             ';
                     } else {
 
-                        $sql = "SELECT * FROM challenge";
-                    $result = mysqli_query($con, $sql);
-                    $count = mysqli_num_rows($result);
+                       
                         $index = 0;
                         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                             echo '  

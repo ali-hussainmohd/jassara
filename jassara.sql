@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 19, 2022 at 10:10 PM
+-- Generation Time: Oct 20, 2022 at 10:58 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -98,8 +98,7 @@ CREATE TABLE `faculty` (
 
 CREATE TABLE `previous_challenge` (
   `id` int(11) NOT NULL,
-  `stname` varchar(255) NOT NULL,
-  `uni_id` varchar(255) NOT NULL,
+  `uni_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `challenge_num` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -107,10 +106,11 @@ CREATE TABLE `previous_challenge` (
 -- Dumping data for table `previous_challenge`
 --
 
-INSERT INTO `previous_challenge` (`id`, `stname`, `uni_id`, `challenge_num`) VALUES
-(1, 'SARA', '2190006173', 121),
-(2, 'SARA', '2190006173', 110),
-(3, 'SARA', '2190006173', 120);
+INSERT INTO `previous_challenge` (`id`, `uni_id`, `challenge_num`) VALUES
+(9, '2190006174', 122),
+(10, '2190006175', 122),
+(11, '2190006175', 123),
+(12, '2190006175', 160);
 
 -- --------------------------------------------------------
 
@@ -139,7 +139,6 @@ CREATE TABLE `student` (
   `uni_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `major` text COLLATE utf8_unicode_ci NOT NULL,
-  `challenge_num` int(10) NOT NULL,
   `date_birth` date NOT NULL,
   `uni_level` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -148,10 +147,10 @@ CREATE TABLE `student` (
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`id`, `full_name`, `stname`, `uni_id`, `password`, `major`, `challenge_num`, `date_birth`, `uni_level`) VALUES
-(1, 'SARA ALMUTARI', 'SARA', '2190006173', '123456', 'IT', 121, '2022-10-19', 'SENIOR'),
-(3, 'AMIRA AHLAM', 'AMIRA', '2190006174', '123456', 'IT', 100, '2000-08-01', 'SENIOR'),
-(4, 'RADA AHLAM', 'RADA', '2190006175', '123456', 'IT', 100, '2000-08-01', 'SENIOR');
+INSERT INTO `student` (`id`, `full_name`, `stname`, `uni_id`, `password`, `major`, `date_birth`, `uni_level`) VALUES
+(1, 'SARA ALMUTARI', 'SARA', '2190006173', '123456', 'IT', '2022-10-19', 'SENIOR'),
+(3, 'AMIRA AHLAM', 'AMIRA', '2190006174', '123456', 'IT', '2000-08-01', 'SENIOR'),
+(4, 'RADA AHLAM', 'RADA', '2190006175', '123456', 'IT', '2000-08-01', 'SENIOR');
 
 --
 -- Indexes for dumped tables
@@ -176,7 +175,8 @@ ALTER TABLE `faculty`
 --
 ALTER TABLE `previous_challenge`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `challage_id` (`challenge_num`);
+  ADD KEY `challage_id` (`challenge_num`),
+  ADD KEY `uni_id_2` (`uni_id`) USING BTREE;
 
 --
 -- Indexes for table `result`
@@ -193,8 +193,7 @@ ALTER TABLE `result`
 ALTER TABLE `student`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `stname` (`stname`),
-  ADD UNIQUE KEY `uni_id` (`uni_id`),
-  ADD KEY `challenge_num` (`challenge_num`);
+  ADD UNIQUE KEY `uni_id` (`uni_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -210,7 +209,7 @@ ALTER TABLE `faculty`
 -- AUTO_INCREMENT for table `previous_challenge`
 --
 ALTER TABLE `previous_challenge`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `student`
@@ -223,29 +222,11 @@ ALTER TABLE `student`
 --
 
 --
--- Constraints for table `faculty`
---
-ALTER TABLE `faculty`
-  ADD CONSTRAINT `faculty_ibfk_1` FOREIGN KEY (`challenge_num`) REFERENCES `challenge` (`challenge_num`);
-
---
 -- Constraints for table `previous_challenge`
 --
 ALTER TABLE `previous_challenge`
-  ADD CONSTRAINT `challage_id` FOREIGN KEY (`challenge_num`) REFERENCES `challenge` (`challenge_num`);
-
---
--- Constraints for table `result`
---
-ALTER TABLE `result`
-  ADD CONSTRAINT `result_ibfk_1` FOREIGN KEY (`tname`) REFERENCES `faculty` (`tname`),
-  ADD CONSTRAINT `result_ibfk_2` FOREIGN KEY (`stname`) REFERENCES `student` (`stname`);
-
---
--- Constraints for table `student`
---
-ALTER TABLE `student`
-  ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`challenge_num`) REFERENCES `challenge` (`challenge_num`);
+  ADD CONSTRAINT `challage_id` FOREIGN KEY (`challenge_num`) REFERENCES `challenge` (`challenge_num`),
+  ADD CONSTRAINT `student_id` FOREIGN KEY (`uni_id`) REFERENCES `student` (`uni_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

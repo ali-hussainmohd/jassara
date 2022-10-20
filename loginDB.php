@@ -41,6 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 session_start();
                 $_SESSION['username'] = $row['stname'];
+                $_SESSION['uni_id'] = $username;
                 $_SESSION['fullname'] = $row['full_name'];
                 $_SESSION['birth_date'] = $row['date_birth'];
                 $_SESSION['level'] = $row['uni_level'];
