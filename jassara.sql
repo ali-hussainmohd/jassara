@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 20, 2022 at 10:58 PM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.3
+-- Generation Time: Oct 21, 2022 at 02:33 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -110,7 +109,23 @@ INSERT INTO `previous_challenge` (`id`, `uni_id`, `challenge_num`) VALUES
 (9, '2190006174', 122),
 (10, '2190006175', 122),
 (11, '2190006175', 123),
-(12, '2190006175', 160);
+(12, '2190006175', 160),
+(14, '2190006173', 500),
+(15, '2190006173', 300),
+(16, '2190006173', 300),
+(17, '2190006173', 100),
+(18, '2190006173', 100),
+(19, '2190006173', 100),
+(20, '2190006173', 122),
+(21, '2190006173', 122),
+(22, '2190006173', 160),
+(23, '2190006173', 500),
+(24, '2190006173', 121),
+(25, '2190006173', 121),
+(26, '2190006173', 121),
+(27, '2190006173', 200),
+(28, '2190006173', 100),
+(29, '2190006173', 100);
 
 -- --------------------------------------------------------
 
@@ -122,9 +137,30 @@ CREATE TABLE `result` (
   `stname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `point` int(11) NOT NULL,
   `challenge_num` int(10) NOT NULL,
-  `challenge_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `tname` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `challenge_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `result`
+--
+
+INSERT INTO `result` (`stname`, `point`, `challenge_num`, `challenge_name`) VALUES
+('SARA', 1800, 121, 'Business Analyst'),
+('SARA', 1800, 300, 'Business Analyst'),
+('SARA', 1800, 40, 'Business Analyst'),
+('SARA', 1800, 50, 'Business Analyst'),
+('SARA', 1800, 140, 'Business Analyst'),
+('ZMOR', 1800, 147, 'Business Analyst'),
+('DEEA', 1800, 71, 'Business Analyst'),
+('REEM', 1800, 17, 'Business Analyst'),
+('SALMA', 1800, 7, 'Business Analyst'),
+('AHLAM', 1800, 8, 'Business Analyst'),
+('NOOR', 1800, 47, 'Business Analyst'),
+('RETAJ', 1800, 5, 'Business Analyst'),
+('JALIL', 1800, 57, 'Business Analyst'),
+('SALMAN', 1800, 87, 'Business Analyst'),
+('SULIMAN', 1800, 58, 'Business Analyst'),
+('NOOF', 1800, 85, 'Business Analyst');
 
 -- --------------------------------------------------------
 
@@ -184,8 +220,7 @@ ALTER TABLE `previous_challenge`
 ALTER TABLE `result`
   ADD KEY `stname` (`stname`),
   ADD KEY `challenge_num` (`challenge_num`),
-  ADD KEY `challenge_name` (`challenge_name`),
-  ADD KEY `tname` (`tname`);
+  ADD KEY `challenge_name` (`challenge_name`);
 
 --
 -- Indexes for table `student`
@@ -209,7 +244,7 @@ ALTER TABLE `faculty`
 -- AUTO_INCREMENT for table `previous_challenge`
 --
 ALTER TABLE `previous_challenge`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `student`

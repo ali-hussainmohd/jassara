@@ -26,7 +26,7 @@ admin_nav();
             <br>
             <a style="color: White;" href="ManageUsers.php"> <button type="button" class="btn btn-primary btn-lg btn-block " style="background-color: #18a4bc;">Manage Users</button></a>
             <br>
-            <a style="color: White;" href="ranking.php"> <button type="button" class="btn btn-primary btn-lg btn-block " style="background-color: #18a4bc;">Manage Results</button></a>
+            <a style="color: White;" href="ManageRanking.php"> <button type="button" class="btn btn-primary btn-lg btn-block " style="background-color: #18a4bc;">Manage Results</button></a>
             <br>
 
 

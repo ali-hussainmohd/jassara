@@ -54,25 +54,44 @@ login_nav();
                         <ol class="list-group list-group-numbered">
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                           <div class="ms-2 me-auto">
-                            <div class="fw-bold"><h4>'.$row['challenge_name'].'</h4></div>
-                            Level: '.$row['challenge_level'].'
+                            <div class="fw-bold"><h4>' . $row['challenge_name'] . '</h4></div>
+                            Level: ' . $row['challenge_level'] . '
                             <br>
-                            Start Date: '.$row['challenge_date'].' 
+                            Start Date: ' . $row['challenge_date'] . ' 
                             <br>
-                            Deadline : '.$row['Deadline'].'
+                            Deadline : ' . $row['Deadline'] . '
                           </div>
                           <span class="badge bg-info rounded-pill" style="color:white;font-size:20px">
-                          '.$row['challenge_num'].'
+                          ' . $row['challenge_num'] . '
                           </span>
                           
                         </li>
-                        <form>
-                        <button type="submit" class="btn bg-info" style="color:white;">Join Challenge</button>
+                        <form action="" Method ="POST">
+                        <button type="submit" class="btn bg-info" style="color:white;" name="joinButton" value="' . $row['challenge_num'] . '">Join Challenge</button>
                         </form>
                         <br>
                       </ol>
                       </div>
                    ';
+                }
+                if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                    // to join challenges 
+                    if (isset($_POST['joinButton'])) {
+                        // join button , becase the challenge number in button value
+                        ini_set('display_errors', '0');
+                        $Insert_Challenge = 'INSERT INTO previous_challenge (uni_id, challenge_num) VALUES 
+                        (' . $_SESSION['uni_id'] . ',' . $_POST['joinButton'] . ') ;';
+                        $Insertion_result = mysqli_query($con, $Insert_Challenge);
+                        $url = "challengePage.php";
+                        echo '<script language="javascript">window.location.href ="' . $url . '"</script>';
+                        $insert_count = mysqli_num_rows($Insertion_result);
+
+
+                        echo $insert_count;
+                        mysqli_close($con);
+
+                        exit();
+                    }
                 }
             }
             ?>

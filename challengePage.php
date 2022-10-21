@@ -68,7 +68,6 @@ login_nav();
                                   </span>
                                   
                                 </li>
-                                <button class="btn bg-info" style="color:white;">Join Challenge</button>
                                 <br>
                               </ol>
                               </div>
@@ -77,7 +76,6 @@ login_nav();
                     }
         
         ?>
-        <p style="text-align:center;">No challenges</p>
         
         </section>
         <a style="color: White;" href="studentPage.php"><button class="btn btn-info ">Back</button></a>

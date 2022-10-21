@@ -110,7 +110,7 @@ $count = mysqli_num_rows($result);
 
 
     
-    <button type="button col" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">
+    <button type="button col" class="btn btn-info">
         <a style="color:White;" href="admin.php">Back</a>
     </button>
 

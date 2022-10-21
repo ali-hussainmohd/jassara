@@ -244,8 +244,8 @@ function admin_nav()
             <ul>
                 
                 <li><a href="ManageChallenges.php">Manage Challenges</a></li>
-                <li><a href="ranking.php">Manage Users</a></li>
-                <li><a href="index.php#contact-us">Manage Results</a></li>
+                <li><a href="ManageUsers.php">Manage Users</a></li>
+                <li><a href="ManageRanking.php">Manage Results</a></li>
             </ul>
             </a>
     </ul>
