@@ -73,7 +73,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 else 
                 {
                     // FACULTY LOGIN 
+                    $sql = "select * from faculty where ID = '$username' and password = '$password'";
+                    $result = mysqli_query($con, $sql);
+                    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                    $count = mysqli_num_rows($result);
+    
+    
+                    if ($count == 1) {
+                        session_start();
+                        $_SESSION['username'] = $row['tname'] ;
+                        $_SESSION['T_ID'] = $row['id'];
+                        // to route the challenge pages
+                        $_SESSION['userRole'] ="Faculty"; 
+   
+                        header('Location:faculty.php');
+                        exit();
                 }
+            }
 
     
                 header("Location: login.php?error1=UserNotFound");

@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'tamplate.php';
 Admin_header();
 admin_nav();
@@ -104,15 +105,35 @@ $count = mysqli_num_rows($result);
     </table>
 
     <!-- Button trigger modal -->
+
+
     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">
         Add New Challenge
     </button>
 
+    <?php
+    if (!empty($_SESSION['userRole'])) {
 
+        if ($_SESSION['userRole'] == "Faculty") {
+            echo
+            '
+            <button type="button col" class="btn btn-info">
+                <a style="color:White;" href="faculty.php">Back</a>
+            </button>
     
-    <button type="button col" class="btn btn-info">
-        <a style="color:White;" href="admin.php">Back</a>
-    </button>
+            ';
+        }
+    } else {
+        echo
+        '
+            <button type="button col" class="btn btn-info">
+                <a style="color:White;" href="admin.php">Back</a>
+            </button>
+    
+            ';
+    }
+    ?>
+
 
 
 

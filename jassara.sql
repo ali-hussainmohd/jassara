@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 21, 2022 at 02:33 PM
+-- Generation Time: Oct 22, 2022 at 07:41 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -89,6 +89,13 @@ CREATE TABLE `faculty` (
   `challenge_num` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `faculty`
+--
+
+INSERT INTO `faculty` (`id`, `tname`, `password`, `challenge_num`) VALUES
+(4008, 'Ahlam', '123456', 100);
+
 -- --------------------------------------------------------
 
 --
@@ -145,22 +152,22 @@ CREATE TABLE `result` (
 --
 
 INSERT INTO `result` (`stname`, `point`, `challenge_num`, `challenge_name`) VALUES
-('SARA', 1800, 121, 'Business Analyst'),
-('SARA', 1800, 300, 'Business Analyst'),
-('SARA', 1800, 40, 'Business Analyst'),
-('SARA', 1800, 50, 'Business Analyst'),
-('SARA', 1800, 140, 'Business Analyst'),
-('ZMOR', 1800, 147, 'Business Analyst'),
-('DEEA', 1800, 71, 'Business Analyst'),
-('REEM', 1800, 17, 'Business Analyst'),
-('SALMA', 1800, 7, 'Business Analyst'),
-('AHLAM', 1800, 8, 'Business Analyst'),
-('NOOR', 1800, 47, 'Business Analyst'),
-('RETAJ', 1800, 5, 'Business Analyst'),
+('Sara', 120, 121, 'Business Analyst'),
+('Mareem', 195, 300, 'Business Analyst'),
+('Rehab', 620, 40, 'Business Analyst'),
+('SARA', 34, 50, 'Business Analyst'),
+('SARA', 544, 140, 'Business Analyst'),
+('ZMOR', 100, 147, 'Business Analyst'),
+('DEEA', 34, 71, 'Business Analyst'),
+('REEM', 52, 17, 'Business Analyst'),
+('SALMA', 365, 7, 'Business Analyst'),
+('AHLAM', 14, 8, 'Business Analyst'),
+('NOOR', 28, 47, 'Business Analyst'),
+('RETAJ', 96, 5, 'Business Analyst'),
 ('JALIL', 1800, 57, 'Business Analyst'),
-('SALMAN', 1800, 87, 'Business Analyst'),
-('SULIMAN', 1800, 58, 'Business Analyst'),
-('NOOF', 1800, 85, 'Business Analyst');
+('SALMAN', 125, 87, 'Business Analyst'),
+('SULIMAN', 369, 58, 'Business Analyst'),
+('NOOF', 98, 85, 'Business Analyst');
 
 -- --------------------------------------------------------
 
@@ -238,7 +245,7 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `faculty`
 --
 ALTER TABLE `faculty`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4009;
 
 --
 -- AUTO_INCREMENT for table `previous_challenge`

@@ -57,7 +57,7 @@ https://templatemo.com/tm-537-Jassara
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="#welcome" class="active">Home</a></li>
                             <li class="scroll-to-section"><a href="#about">About</a></li>
-                            <li class="scroll-to-section"><a href="#Challenges">Challenges</a></li>
+                            <li class="scroll-to-section"><a href="login.php">Challenges</a></li>
                             <li class="scroll-to-section"><a href="login.php">Login</a></li>
                             <li class="scroll-to-section"><a href="#contact-us">Contact Us</a></li>
                             <li class="scroll-to-section"><a href="#Results">Results </a></li>

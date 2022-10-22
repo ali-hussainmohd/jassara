@@ -94,6 +94,8 @@ login_nav();
 
 
         <button type="submit" class="btn btn-info" name="saveButton">Save Changes</button>
+
+        
         <button class="btn btn-secondary">
             <a href="ManageRanking.php" style="color: white;">
                 Back
