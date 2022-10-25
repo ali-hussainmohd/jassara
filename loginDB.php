@@ -45,6 +45,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['fullname'] = $row['full_name'];
                 $_SESSION['birth_date'] = $row['date_birth'];
                 $_SESSION['level'] = $row['uni_level'];
+                $_SESSION['userRole'] ="Student"; 
+
 
                 header('Location:studentPage.php');
                 exit();
@@ -67,6 +69,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $_SESSION['fullname'] = $row['full_name'];
                     $_SESSION['birth_date'] = $row['date_birth'];
                     $_SESSION['level'] = $row['uni_level'];
+                    $_SESSION['userRole'] ="Admin"; 
+
                     header('Location:admin.php');
                     exit();
                 }  //if

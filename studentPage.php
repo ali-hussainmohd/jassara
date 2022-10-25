@@ -1,7 +1,7 @@
 <?php session_start();
 include 'tamplate.php';
-login_header();
-login_nav();
+Admin_header();
+admin_nav();
 ?>
 
 

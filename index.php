@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
 
     <title>Jassara HTML CSS Template</title>
-<!--
+    <!--
 
 Jassara
 
@@ -22,11 +22,11 @@ https://templatemo.com/tm-537-Jassara
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="assets/css/templatemo-art-factory.css">
     <link rel="stylesheet" type="text/css" href="assets/css/owl-carousel.css">
-     
-    </head>
-    
-    <body>
-    
+
+</head>
+
+<body>
+
     <!-- ***** Preloader Start ***** -->
     <div id="preloader">
         <div class="jumper">
@@ -34,10 +34,10 @@ https://templatemo.com/tm-537-Jassara
             <div></div>
             <div></div>
         </div>
-    </div>  
+    </div>
     <!-- ***** Preloader End ***** -->
-    
-    
+
+
     <!-- ***** Header Area Start ***** -->
     <header class="header-area header-sticky">
         <div class="container">
@@ -45,12 +45,14 @@ https://templatemo.com/tm-537-Jassara
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="#" ><div class="logo">
-                        <img src="assets/images/JPHP.jpg" alt="Jassara" width="99" height="97" float:left>
-    
+                        <a href="#">
+                            <div class="logo">
+                                <img src="assets/images/JPHP.jpg" alt="Jassara" width="99" height="97" float:left>
 
-                        
-</div></a> 
+
+
+                            </div>
+                        </a>
 
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
@@ -70,12 +72,12 @@ https://templatemo.com/tm-537-Jassara
                                     <li><a href="">contect us</a></li>
                                     <li><a href="">Results</a></li>
 
-</div></a>      </ul>
-                            
-                        <!-- ***** Menu End ***** -->
-                    </nav>
-                </div>
+                </div></a> </ul>
+
+                <!-- ***** Menu End ***** -->
+                </nav>
             </div>
+        </div>
         </div>
     </header>
     <!-- ***** Header Area End ***** -->
@@ -116,7 +118,7 @@ https://templatemo.com/tm-537-Jassara
                         <h5>عن جسارة</h5>
                     </div>
                     <div class="left-text">
-                        <p><a href="#"></a>منصة جسارة هي منصة تحديات مخصصة لطلاب وطالبات كلية الدراسات التطبيقية و خدمة المجتمع من جميع المستويات وهو عبارة عن نظام إلكتروني يتم من خلاله طرح تحديات من قبل الكلية عن مشاكل تواجهها المنشآت يمكن للطلاب المشاركة بالتحديات إلكترونيًا ويمكنهم القيام بالتحديات بشكل فردي او عبر الانضمام إلى مجموعات ولديهم الخيار بالمشاركة  بتحدي واحد او عدة تحديات مع وجود مكافئات متنوعة للتحديات </p>
+                        <p><a href="#"></a>منصة جسارة هي منصة تحديات مخصصة لطلاب وطالبات كلية الدراسات التطبيقية و خدمة المجتمع من جميع المستويات وهو عبارة عن نظام إلكتروني يتم من خلاله طرح تحديات من قبل الكلية عن مشاكل تواجهها المنشآت يمكن للطلاب المشاركة بالتحديات إلكترونيًا ويمكنهم القيام بالتحديات بشكل فردي او عبر الانضمام إلى مجموعات ولديهم الخيار بالمشاركة بتحدي واحد او عدة تحديات مع وجود مكافئات متنوعة للتحديات </p>
                         <a href="#about2" class="main-button">اقرأ المزيد</a>
                     </div>
                 </div>
@@ -132,22 +134,22 @@ https://templatemo.com/tm-537-Jassara
 
 
     <!-- ***** Features Big Item Start ***** -->
-      
-                
+
+
     <!-- ***** Features Big Item End ***** -->
 
 
     <!-- ***** Features Small Start ***** -->
-    
-                    
+
+
     <!-- ***** Features Small End ***** -->
 
 
-    
-            <!-- ***** Section Title End *****-->
 
-            
-    
+    <!-- ***** Section Title End *****-->
+
+
+
     <!-- ***** Frequently Question End ***** -->
 
 
@@ -156,36 +158,49 @@ https://templatemo.com/tm-537-Jassara
         <div class="container-fluid">
             <div class="row">
                 <!-- ***** Contact Map Start ***** -->
-         
+
                 <!-- ***** Contact Map End ***** -->
 
                 <!-- ***** Contact Form Start ***** -->
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="contact-form">
+
                         <form id="contact" action="" method="post">
-                          <div class="row">
-                            <div class="col-md-6 col-sm-12">
-                              <fieldset>
-                                <input name="name" type="text" id="name" placeholder="Full Name" required="" class="contact-field">
-                              </fieldset>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12">
+                                    <fieldset>
+                                        <input name="ffname" type="text" id="name" placeholder="Full Name" required="" class="contact-field">
+                                    </fieldset>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <fieldset>
+                                        <input name="sender_email" type="text" id="email" placeholder="E-mail" required="" class="contact-field">
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-12">
+                                    <fieldset>
+                                        <textarea name="message" rows="6" id="Message" placeholder="Your Message" required="" class="contact-field"></textarea>
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-12">
+                                    <fieldset>
+                                        <button id="form-submit" class="main-button" name="button_pressed">
+                                            <?php
+                                            echo 
+                                            '
+                                            <a style="color:white" href="mailto:jassaraiau@gmail.com?subject='.$_POST['ffname'].' Feedback&body='.$_POST['message'].'%0D'.$_POST['sender_email'].'">Send it</a>
+                                            ';
+                                            ?>
+                                       
+                                        </button>
+                                    </fieldset>
+                                </div>
                             </div>
-                            <div class="col-md-6 col-sm-12">
-                              <fieldset>
-                                <input name="email" type="text" id="email" placeholder="E-mail" required="" class="contact-field">
-                              </fieldset>
-                            </div>
-                            <div class="col-lg-12">
-                              <fieldset>
-                                <textarea name="message" rows="6" id="message" placeholder="Your Message" required="" class="contact-field"></textarea>
-                              </fieldset>
-                            </div>
-                            <div class="col-lg-12">
-                              <fieldset>
-                                <button type="submit" id="form-submit" class="main-button">Send It</button>
-                              </fieldset>
-                            </div>
-                          </div>
                         </form>
+
+
+
+
                     </div>
                 </div>
                 <!-- ***** Contact Form End ***** -->
@@ -194,15 +209,15 @@ https://templatemo.com/tm-537-Jassara
     </section>
     <!-- ***** Contact Us End ***** -->
 
-    
+
     <!-- ***** Footer Start ***** -->
     <footer>
         <div class="container">
             <div class="row">
                 <div class="col-lg-7 col-md-12 col-sm-12">
                     <p class="copyright">Copyright &copy; 2022 Jassara
-                
-                . 
+
+                        .
                 </div>
                 <div class="col-lg-5 col-md-12 col-sm-12">
                     <ul class="social">
@@ -216,7 +231,7 @@ https://templatemo.com/tm-537-Jassara
             </div>
         </div>
     </footer>
-    
+
     <!-- jQuery -->
     <script src="assets/js/jquery-2.1.0.min.js"></script>
 
@@ -229,10 +244,11 @@ https://templatemo.com/tm-537-Jassara
     <script src="assets/js/scrollreveal.min.js"></script>
     <script src="assets/js/waypoints.min.js"></script>
     <script src="assets/js/jquery.counterup.min.js"></script>
-    <script src="assets/js/imgfix.min.js"></script> 
-    
+    <script src="assets/js/imgfix.min.js"></script>
+
     <!-- Global Init -->
     <script src="assets/js/custom.js"></script>
 
-  </body>
+</body>
+
 </html>

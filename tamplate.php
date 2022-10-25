@@ -174,7 +174,36 @@ function Admin_header()
                 position: relative;
                 height: 200px;
                 margin-top: -200px;
-            }
+            } 
+            #myInput {
+                background-position: 10px 12px;
+                background-repeat: no-repeat;
+                width: 100%;
+                font-size: 16px;
+                padding: 12px 20px 12px 40px;
+                border: 1px solid #ddd;
+                margin-bottom: 12px;
+              }
+              
+              #myUL {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+              }
+              
+              #myUL li a {
+                border: 1px solid #ddd;
+                margin-top: -1px; /* Prevent double borders */
+                padding: 2px;
+                text-decoration: none;
+                font-size: 18px;
+                color: black;
+                display: block
+              }
+              
+              #myUL li a:hover:not(.header) {
+                background-color: #eee;
+              }
         </style>
     
         <title>Jassara HTML CSS Template</title>
@@ -217,6 +246,8 @@ function Admin_header()
                         <!-- ***** Logo End ***** -->';
 }
 
+
+
 function admin_nav()
 {
     echo '  <!-- ***** Menu Start ***** -->
@@ -226,29 +257,154 @@ function admin_nav()
 
             <div class="input-group">
                 <div class="form-outline">
-                    <input type="search" id="form1" class="form-control" placeholder="Search" />
-                </div>
+                <form method="POST" action="">
+                
+                        <input type="text" id="myInput" onkeyup="myFunction()" onmouseleave="OnMouseLeave()" placeholder="Search .." title="Type in a name">
 
-                <button type="button" class="btn searchBarButton" style="background-color:white">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                    </svg>
-                </button>
-            </div>
+                            <script>
+                            function OnMouseLeave()
+                            {
+                                if(document.getElementById("myInput").value.length == 0)
+                                {
+                                    ul = document.getElementById("myUL");
+                                    ul.style.display="none";
+                                }
 
+                             
+                            }
+
+                                function myFunction() {
+                                   var input, filter, ul, li, a, i, txtValue;
+                                      input = document.getElementById("myInput");
+                                    filter = input.value.toUpperCase();
+                                    ul = document.getElementById("myUL");
+                                     ul.style.display="block";
+                                    li = ul.getElementsByTagName("li");
+                                    for (i = 0; i < li.length; i++) {
+                                    a = li[i].getElementsByTagName("a")[0];
+                                  txtValue = a.textContent || a.innerText;
+                             if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                li[i].style.display = "";
+                                } else {
+                                    if(txtValue == null)
+                                    {
+                                        ul.style.display="none";
+
+                                    }
+                                li[i].style.display = "none";
+                                 }
+
+                                
+    }
+}
+                            </script>
+
+                  
+                </form>
+';
+
+echo '<ul id="myUL" class="bg-light" style="display:none;">';
+             
+if($_SESSION['userRole'] == "Faculty")
+{
+    echo '
+    <li><a href="faculty.php">Faculty Home </a></li>
+    <li><a href="facultyProfile.php">Faculty Profile</a></li>
+    <li><a href="ManageChallenges.php">Manage Challenges</a></li>
+    <li><a href="ManageRanking.php">Manage Rankings</a></li>
+    ';
+}
+else if ($_SESSION['userRole'] == "Admin")
+{
+    echo '
+    <li><a href="admin.php">Admin Home </a></li>
+    <li><a href="ManageChallenges.php">Manage Challenges</a></li>
+    <li><a href="ManageUsers.php">Manage Users</a></li>
+    <li><a href="ManageRanking.php">Manage Rankings</a></li>
+    ';
+
+}
+else
+{
+    echo 
+    '
+    <li><a href="studentPage.php">Student Home </a></li>
+    <li><a href="studentProfile.php">Profile </a></li>
+    <li><a href="challengePage.php">Challenges </a></li>
+    <li><a href="challenges.php"> Join Challenges </a></li>
+    <li><a href="ranking.php"> Ranks</a></li>
+
+
+
+    
+    ';
+}
+        echo' </ul>';
+
+
+ 
+
+
+    echo '
+      </div>
         </li>
         <li class="scroll-to-section"><a href="index.php#welcome" class="active">Home</a></li>
         <li class="scroll-to-section"><a href="index.php#about">About</a></li>
-        <li class="submenu">
-            <a href="javascript:;">Drop Down</a>
-            <ul>
-                
-                <li><a href="ManageChallenges.php">Manage Challenges</a></li>
-                <li><a href="ManageUsers.php">Manage Users</a></li>
-                <li><a href="ManageRanking.php">Manage Results</a></li>
-            </ul>
-            </a>
+';
+
+if($_SESSION['userRole'] == "Faculty")
+{
+
+    echo 
+    '
+    <li class="submenu">
+    <a href="javascript:;">Drop Down</a>
+    <ul>
+        
+        <li><a href="facultyProfile.php">Profile</a></li>
+        <li><a href="ManageChallenges.php">Manage Challenges</a></li>
+        <li><a href="ManageRanking.php">Manage Results</a></li>
     </ul>
+    </a>
+</ul>
+    ';
+}
+else if ($_SESSION['userRole']=="Admin")
+{
+    echo 
+    '
+    <li class="submenu">
+    <a href="javascript:;">Drop Down</a>
+    <ul>
+        
+        <li><a href="ManageUsers.php">Manage Users</a></li>
+        <li><a href="ManageChallenges.php">Manage Challenges</a></li>
+        <li><a href="ManageRanking.php">Manage Results</a></li>
+    </ul>
+    </a>
+</ul>
+    ';
+}
+else 
+{
+
+    echo '
+    <li class="submenu">
+    <a href="javascript:;">Drop Down</a>
+    <ul>
+        
+      <li><a href="challengePage.php">Challenges</a></li>
+        <li><a href="ranking.php">Ranking</a></li>
+        <li><a href="index.php#contact-us">contect us</a></li>
+    </ul>
+    </a>
+</ul>
+';
+
+}
+
+  
+    echo '
 
     <!-- ***** Menu End ***** -->
 </nav>
