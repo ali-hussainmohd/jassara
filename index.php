@@ -184,14 +184,37 @@ https://templatemo.com/tm-537-Jassara
                                 </div>
                                 <div class="col-lg-12">
                                     <fieldset>
-                                        <button id="form-submit" class="main-button" name="button_pressed">
+                                        <button type="submit" id="form-submit" class="main-button" name="button_pressed">
                                             <?php
-                                            echo 
-                                            '
-                                            <a style="color:white" href="mailto:jassaraiau@gmail.com?subject='.$_POST['ffname'].' Feedback&body='.$_POST['message'].'%0D'.$_POST['sender_email'].'">Send it</a>
+                                            try {
+
+                                                $emailSender = "";
+                                                $fname = "";
+                                                $message = "";
+
+                                                if (isset($_POST['ffname'])) {
+                                                    $fname = $_POST['ffname'];
+                                                    if (isset($_POST['message'])) {
+                                                        $message = $_POST['message'];
+                                                        if (isset($_POST['sender_email']))
+                                                            $emailSender = $_POST['sender_email'];
+                                                        else
+                                                            $emailSender = "";
+                                                    } else {
+                                                        $message = "";
+                                                    }
+                                                } else {
+                                                    $fname = "";
+                                                }
+                                                echo
+                                                '
+                                            <a style="color:white" href="mailto:jassaraiau@gmail.com?subject=' . $fname . ' Feedback&body=' . $message . '%0D' . $emailSender. '">Send it</a>
                                             ';
+                                            } catch (Exception $Sa) {
+                                            }
+
                                             ?>
-                                       
+
                                         </button>
                                     </fieldset>
                                 </div>
