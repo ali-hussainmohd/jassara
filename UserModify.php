@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'tamplate.php';
 Admin_header();
 admin_nav();
@@ -75,16 +76,12 @@ admin_nav();
             <input type="text" class="form-control" placeholder="Major" name="StudentMajor" value="<?php echo $row['major']; ?>">
         </div>
 
-        <div class="form-group">
-            <label for="Date">Challenge Number</label>
-
-            <input type="number" class="form-control" placeholder="Challenge Level" name="StudentChallengeNum" value="<?php echo $row['challenge_num']; ?>">
-        </div>
+       
 
         <div class="form-group">
             <label for="Date">Date of Birth</label>
 
-            <input type="date" class="form-control" placeholder="Challenge Level" name="studentBD" value="<?php echo $row['date_birth']; ?>">
+            <input type="date" class="form-control" placeholder="Date of Birth" name="studentDB" value="<?php echo $row['date_birth']; ?>">
         </div>
 
         <div class="form-group">
@@ -103,24 +100,38 @@ admin_nav();
         </button>
 
         <?php
-
+        
         try {
 
             $con = connection();
 
-            if (!empty($_POST['sfullname'])) {
-                $sql = "UPDATE student set full_name =? where id =?";
+            if (isset($_POST['ssaveButton'])) {
+                
+                $sql = "UPDATE student set full_name =?, stname=?, uni_id=?, major=?, date_birth=?, uni_level=? where id =?";
                 $stm = $con->prepare($sql);
-                $stm->bind_param('ss', $_POST['sfullname'], $SSID);
+                $stm->bind_param('sssssss',
+                                 $_POST['sfullname'],
+                                 $_POST['Sname'],
+                                 $_POST['UniversityID'],
+                                 $_POST['StudentMajor'],
+                                 $_POST['studentDB'],
+                                 $_POST['UniversityLevel'],
+                                 $_POST['StudentID']);
                 $stm->execute();
 
                 echo '<script language="javascript">';
-                echo 'alert("' . $_POST['sfullname'] . '")';
+                echo 'alert("' . $_POST['sfullname'] . ' update ")';
                 echo '</script>';
 
                 $url = "ManageUsers.php";
                 echo '<script language="javascript">window.location.href ="' . $url . '"</script>';
+
+                if ($stm->error) {
+                    echo "FAILURE!!! " . $stm->error;
+                  }
+                  else echo "Updated {$stm->affected_rows} rows";
                 exit();
+            
             } 
         } catch (Exception $s) {
             echo '<script language="javascript">';

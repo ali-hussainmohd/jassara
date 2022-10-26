@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'tamplate.php';
 Admin_header();
 admin_nav();
@@ -114,7 +115,7 @@ admin_nav();
 
 
         <button type="submit" class="btn btn-info" name="saveButton">Save Changes</button>
-        <button class="btn btn-secondary"> 
+        <button class="btn btn-secondary" onclick="document.location='ManageChallenges.php'"> 
             <a href="ManageChallenges.php" style="color: white;">
                 Back
             </a>
@@ -128,7 +129,7 @@ admin_nav();
             echo '</script>';
 
             $con = connection();
-            if (isset($_POST['ChallengeNumber'])) {
+            if (isset($_POST['saveButton'])) {
                 // delete challenge 
                 $ChallengeNumber = $_POST['ChallengeNumber'];
                 $sql = "UPDATE challenge SET challenge_num=?,challenge_name=?,challenge_level=?,challenge_date=?,Deadline=?,Points=? WHERE challenge_num=?;";
@@ -144,16 +145,20 @@ admin_nav();
                     $_POST['Points'],
                     $ChallengeNumber
                 );
+
                 $stm->execute();
-                if (isset($_POST['saveButton'])) {
+               
+              //  if (isset($_POST['saveButton'])) {
                     echo '<script language="javascript">';
-                    echo 'alert(Challenge Number ' . $ChallengeNumber . ' Updated successfully)';
+                    echo 'alert("Challenge Number ' . $ChallengeNumber . ' Updated successfully")';
                     echo '</script>';
-                }
+                    $url = "ManageChallenges.php";
+                    echo '<script language="javascript">window.location.href ="' . $url . '"</script>';
+               // }
 
 
 
-                exit();
+                //exit();
             }
         } catch (Exception $s) {
             echo '<script language="javascript">';

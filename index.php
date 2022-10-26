@@ -156,14 +156,14 @@ https://templatemo.com/tm-537-Jassara
     <!-- ***** Contact Us Start ***** -->
     <section class="section" id="contact-us">
         <div class="container-fluid">
-            <div class="row">
+            <div class="row d-flex justify-content-center">
                 <!-- ***** Contact Map Start ***** -->
 
                 <!-- ***** Contact Map End ***** -->
 
                 <!-- ***** Contact Form Start ***** -->
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                    <div class="contact-form">
+                <div class="col-lg-8 col-md-6 col-sm-12 ">
+                    <div class="contact-form   ">
 
                         <form id="contact" action="" method="post">
                             <div class="row">

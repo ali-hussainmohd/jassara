@@ -1,4 +1,5 @@
 <?php
+
 function login_header()
 {
     echo '<!DOCTYPE html>

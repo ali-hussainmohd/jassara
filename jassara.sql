@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2022 at 07:01 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Oct 27, 2022 at 12:48 AM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -74,7 +75,7 @@ INSERT INTO `challenge` (`challenge_num`, `challenge_name`, `challenge_level`, `
 (160, 'Microsoft Azure Lamda functions', 'Advanced', '2022-10-08', '2022-12-31', 180),
 (200, 'Php Programmiing', 'hard', '2022-09-28', '2022-11-16', 78),
 (300, 'design ', 'Easy', '2022-09-30', '2022-11-23', 405),
-(500, 'nbn', 'hard', '2022-10-21', '2022-10-31', 120);
+(500, 'ewe', 'hard', '2022-10-21', '2022-11-30', 120);
 
 -- --------------------------------------------------------
 
@@ -120,19 +121,7 @@ INSERT INTO `previous_challenge` (`id`, `uni_id`, `challenge_num`) VALUES
 (14, '2190006173', 500),
 (15, '2190006173', 300),
 (16, '2190006173', 300),
-(17, '2190006173', 100),
-(18, '2190006173', 100),
-(19, '2190006173', 100),
-(20, '2190006173', 122),
-(21, '2190006173', 122),
-(22, '2190006173', 160),
-(23, '2190006173', 500),
-(24, '2190006173', 121),
-(25, '2190006173', 121),
-(26, '2190006173', 121),
-(27, '2190006173', 200),
-(28, '2190006173', 100),
-(29, '2190006173', 100);
+(17, '2190006173', 100);
 
 -- --------------------------------------------------------
 
@@ -141,6 +130,7 @@ INSERT INTO `previous_challenge` (`id`, `uni_id`, `challenge_num`) VALUES
 --
 
 CREATE TABLE `result` (
+  `id` int(11) NOT NULL,
   `stname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `point` int(11) NOT NULL,
   `challenge_num` int(10) NOT NULL,
@@ -151,23 +141,23 @@ CREATE TABLE `result` (
 -- Dumping data for table `result`
 --
 
-INSERT INTO `result` (`stname`, `point`, `challenge_num`, `challenge_name`) VALUES
-('Sara', 120, 121, 'Business Analyst'),
-('Mareem', 195, 300, 'Business Analyst'),
-('Rehab', 620, 40, 'Business Analyst'),
-('SARA', 34, 50, 'Business Analyst'),
-('SARA', 544, 140, 'Business Analyst'),
-('ZMOR', 100, 147, 'Business Analyst'),
-('DEEA', 34, 71, 'Business Analyst'),
-('REEM', 52, 17, 'Business Analyst'),
-('SALMA', 365, 7, 'Business Analyst'),
-('AHLAM', 14, 8, 'Business Analyst'),
-('NOOR', 28, 47, 'Business Analyst'),
-('RETAJ', 96, 5, 'Business Analyst'),
-('JALIL', 1800, 57, 'Business Analyst'),
-('SALMAN', 125, 87, 'Business Analyst'),
-('SULIMAN', 369, 58, 'Business Analyst'),
-('NOOF', 98, 85, 'Business Analyst');
+INSERT INTO `result` (`id`, `stname`, `point`, `challenge_num`, `challenge_name`) VALUES
+(1, 'Sara', 120, 121, 'Business Analyst'),
+(2, 'Mareem', 195, 300, 'Business Analyst'),
+(3, 'Rehab', 620, 40, 'Business Analyst'),
+(4, 'SARA', 34, 50, 'Business Analyst'),
+(5, 'SARA', 544, 140, 'Business Analyst'),
+(6, 'ZMOR', 100, 147, 'Business Analyst'),
+(7, 'DEEA', 34, 71, 'Business Analyst'),
+(8, 'REEM', 52, 17, 'Business Analyst'),
+(9, 'SALMA', 365, 7, 'Business Analyst'),
+(10, 'AHLAM', 14, 8, 'Business Analyst'),
+(11, 'NOOR', 28, 47, 'Business Analyst'),
+(12, 'RETAJ', 96, 5, 'Business Analyst'),
+(13, 'JALIL', 1800, 57, 'Business Analyst'),
+(14, 'SALMAN', 125, 87, 'Business Analyst'),
+(15, 'SULIMAN', 369, 58, 'Business Analyst'),
+(16, 'NOOF', 98, 85, 'Business Analyst');
 
 -- --------------------------------------------------------
 
@@ -193,11 +183,18 @@ CREATE TABLE `student` (
 INSERT INTO `student` (`id`, `full_name`, `stname`, `uni_id`, `password`, `major`, `date_birth`, `uni_level`) VALUES
 (1, 'SARA ALMUTARI', 'SARA', '2190006173', '123456', 'IT', '2022-10-19', 'SENIOR'),
 (3, 'AMIRA AHLAM', 'AMIRA', '2190006174', '123456', 'IT', '2000-08-01', 'SENIOR'),
-(4, 'RADA AHLAM', 'RADA', '2190006175', '123456', 'IT', '2000-08-01', 'SENIOR');
+(4, 'RADA AHLAM', 'RADA', '2190006175', '123456', 'IT', '2000-08-01', 'SENIOR'),
+(6, 'Mai Ahmed', 'Mai', '24554544', '123456', 'ce', '2002-08-24', 'senuor');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `challenge`
@@ -225,6 +222,7 @@ ALTER TABLE `previous_challenge`
 -- Indexes for table `result`
 --
 ALTER TABLE `result`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `stname` (`stname`),
   ADD KEY `challenge_num` (`challenge_num`),
   ADD KEY `challenge_name` (`challenge_name`);
@@ -251,13 +249,19 @@ ALTER TABLE `faculty`
 -- AUTO_INCREMENT for table `previous_challenge`
 --
 ALTER TABLE `previous_challenge`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
+-- AUTO_INCREMENT for table `result`
+--
+ALTER TABLE `result`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables

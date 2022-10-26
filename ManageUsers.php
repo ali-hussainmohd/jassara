@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include 'tamplate.php';
 Admin_header();
 admin_nav();
@@ -96,8 +96,9 @@ $count = mysqli_num_rows($result);
                     $stm->execute();
 
                     echo '<script language="javascript">';
-                    echo 'alert(Challenge Number ' . $SID . ' Deleted successfully)';
+                    echo 'alert("Challenge Number ' . $SID . ' Deleted successfully")';
                     echo '</script>';
+                    echo '<meta http-equiv="refresh" content="0">';
                 }
             } catch (Exception $s) {
                 echo '<script language="javascript">';

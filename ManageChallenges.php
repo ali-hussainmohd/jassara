@@ -90,7 +90,7 @@ $count = mysqli_num_rows($result);
                     $stm->execute();
 
                     echo '<script language="javascript">';
-                    echo 'alert(Challenge Number ' . $ChallengeNumber . ' Deleted successfully)';
+                    echo 'alert("Challenge Number ' . $ChallengeNumber . ' Deleted successfully")';
                     echo '</script>';
                 }
             } catch (Exception $s) {
@@ -110,6 +110,8 @@ $count = mysqli_num_rows($result);
     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">
         Add New Challenge
     </button>
+     
+
 
     <?php
     if (!empty($_SESSION['userRole'])) {
