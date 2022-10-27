@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'tamplate.php';
 Admin_header();
 admin_nav();
@@ -107,27 +108,34 @@ admin_nav();
         try {
 
             $con = connection();
-            if (isset($_POST['ChallengeNumber'])) {
+            if (isset($_POST['saveButton'])) {
                 // delete challenge 
                 $Sname = $_POST['Sname'];
-                $sql = "UPDATE result SET stname=?,challenge_num=?, point=?,challenge_name=? WHERE challenge_num=? and stname =? ;";
+                $sql = "UPDATE result SET stname=?,challenge_num=?, point=?, challenge_name=?  WHERE challenge_num=? and stname =? ;";
 
                 $stm = $con->prepare($sql);
                 $stm->bind_param(
                     'ssssss',
-                    $Sname,
+                    $_POST['Sname'],
                     $_POST['S_cNumber'],
-                    $_POST['S_cName'],
                     $_POST['Spoint'],
+                     $_POST['S_cName'],
                     $_POST['S_cNumber'],
-                    $Sname
+                    $_POST['Sname']
                 );
+
+
+            
+
+                //printf("%d row inserted.\n", $stm->affected_rows);
                 $stm->execute();
-                if (isset($_POST['saveButton'])) {
-                    echo '<script language="javascript">';
-                    echo 'alert(Challenge Number ' . $ChallengeNumber . ' Updated successfully)';
-                    echo '</script>';
-                }
+  
+                echo '<script language="javascript">';
+                echo 'alert("Challenge Number ' . $_POST['S_cNumber'] . ' Updated successfully")';
+                echo '</script>';
+                $url = "ManageRanking.php";
+                echo '<script language="javascript">window.location.href ="' . $url . '"</script>';
+
 
 
 

@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'tamplate.php';
 ini_set('display_errors', '0');
 
@@ -116,6 +117,7 @@ mysqli_close($con);
 
 
     <?php
+    
     if (!empty($_SESSION['userRole'])) {
 
         if ($_SESSION['userRole'] == "Faculty") {
@@ -126,7 +128,7 @@ mysqli_close($con);
             </button>
             ';
         }
-    } else {
+    else {
         echo
         '
             <button type="button col" class="btn btn-info">
@@ -135,6 +137,7 @@ mysqli_close($con);
     
             ';
     }
+    } 
     ?>
 
 
